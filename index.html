@@ -1,0 +1,102 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>VueJS</title>
+        <link rel="stylesheet" href="styles.css">
+        <!-- Vue js  -->
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    </head>
+    <body>
+        <!-- Vue instance -->
+        <div id="vue-app">
+            <!-- Data Bindings-->
+            <h1>Data Bindings</h1>
+            <p>{{ greet('morning') }}</p>
+            <p>Name: {{varname}}</p>
+            <p>Job: {{varjob}}</p>
+            <p>height: <input type="text" V-bind:value="varheight"></p>
+            <div v-html="varhtmlelement"></div>
+            <!-- Mouse events -->
+            <h1>Mouse events</h1>
+            <p>number: {{varnumber}}</p>
+            <button V-on:click.once="add(1)">Add</button>
+            <button V-on:click="minus(1)">Minus</button>
+            <button @dblclick="add(10)">Add 10</button>
+            <button @dblclick="minus(10)">Minus 10</button>
+            <!-- Event modifiers -->
+            <h1>Event modifiers</h1>
+            <div id="canvas" v-on:mousemove="catchEvent()">mouse location:{{varmousex}}:{{varmousey}}</div>       
+            <a @click.prevent="helloAlert()" href="http://www.google.com">Go to google</a>
+            <!-- Keyboard events -->
+            <h1>Keyboard events</h1>
+            Name:<input type=text v-on:keypress="funPress('name')" value=""/>
+            Age:<input type=text v-on:keypress="funPress('age')" value=""/>
+            <br>
+            Gender (enter):<input type=text v-on:keypress.enter="funPress('gender')" value=""/>
+            <br>
+            Location (shift+enter):<input type=text v-on:keypress.shift.enter="funPress('location')" value=""/>
+            <br>
+            Hobby (press F1):<input type=text v-on:keypress.f1="funPress('hobby')" value=""/>
+            <!-- Two ways data-binding -->
+            <h1>Two ways data-binding</h1>
+            Name: <input type=text v-model="varname">
+            Job: <input type=text v-model="varjob">
+            <!-- Dynamic CSS classes -->
+            <h1>Dynamic CSS classes</h1>
+            <button v-on:click="varwarna_box_biru = !varwarna_box_biru">Box color</button>
+            <button v-on:click="varwarna_text_white = !varwarna_text_white">Text color</button>
+            <div v-bind:class="dynamicCssClass">Ganti Warna</div>
+            <!-- Conditionals -->
+            <h1>Conditionals</h1>
+            <button v-on:click="var_conditional_status_blue = !var_conditional_status_blue">blue</button>
+            <button v-on:click="var_conditional_status_red = !var_conditional_status_red">red</button>
+            <button v-on:click="var_conditional_status_yellow = !var_conditional_status_yellow">yellow</button>
+            <br>if:
+            <div v-if="var_conditional_status_blue" class="default_box">blue</div>
+            <div v-if="var_conditional_status_red" class="default_box">red</div>
+            <div v-if="var_conditional_status_yellow" class="default_box">yellow</div>
+            <br>Else if:
+            <div v-if="var_conditional_status_blue" class="default_box">blue</div>
+            <div v-else-if="var_conditional_status_red" class="default_box">red</div>
+            <div v-else-if="var_conditional_status_yellow" class="default_box">yellow</div>
+            <br>show (check the different in inspect):
+            <div v-show="var_conditional_status_blue" class="default_box">blue</div>
+            <div v-show="var_conditional_status_red" class="default_box">red</div>
+            <div v-show="var_conditional_status_yellow" class="default_box">yellow</div>
+            <!-- Loops -->
+            <h1>Loops</h1>
+            <br> v for sting loops
+            <ul>
+                <li v-for="number in var_numbers">{{number}}</li>
+            </ul>
+            <br> v for objects loops
+            <ul>
+                <li v-for="hobby in var_hobbies">{{hobby.hobby}}, {{hobby.tool}} and {{hobby.player}} players</li>
+            </ul>
+            <br> v for objects with index
+            <ul>
+                <li v-for="(hobby, index) in var_hobbies">{{index}}. {{hobby.hobby}}</li>
+            </ul>
+            <br> v for objects repeat template with div
+            <div v-for="(hobby,index) in var_hobbies">
+                <h4>Hobby {{index+1}}</h4>
+                <p v-for="(key,val) in hobby">{{key}}: {{val}}</p>
+            </div>
+            <br> v for objects repeat template with template
+            <template v-for="(hobby,index) in var_hobbies">
+                <h4>Hobby {{index+1}}</h4>
+                <p v-for="(key,val) in hobby">{{key}}: {{val}}</p>
+            </template>
+        </div>
+        <!-- Multiple vue instances -->
+        <h1>Multiple vue instances</h1>
+        <div id = "vue-app-1">
+            <h4>{{ important_text }}</h4>
+        </div>
+        <div id= "vue-app-2">
+            <button v-on:click="changeText">Change text in vue-app-1 from vue-app-2</button>
+            <h4>{{ important_text }}</h4>
+        </div>
+        <script src="app.js"></script>
+    </body>
+</html>

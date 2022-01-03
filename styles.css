@@ -1,0 +1,15 @@
+.default_box{
+    display: inline-block;
+    padding: 10px;
+    margin: 10px 0;
+    background:black;
+    color: #fff;
+}
+
+.warna_box_biru{
+    background:blue;
+}
+
+.warna_text_white{
+    color: black;
+}
