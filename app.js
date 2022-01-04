@@ -78,3 +78,15 @@ var vue_app_2 = new Vue({
 // change the important text in both vue instances
 vue_app_1.important_text = "This is the text for vue instance 1"
 vue_app_2.important_text = "This is the text for vue instance 2"
+
+var vue_app_3 = new Vue({
+    el: '#vue-app-3',
+    data:{
+        important_text: "nothing"
+    },
+    methods:{
+        changeText: function(){
+            vue_app_1.important_text = "the text is changed";
+        }
+    }
+});
